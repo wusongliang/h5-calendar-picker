@@ -1,0 +1,136 @@
+.d-calendar {
+  font-size: 14px;
+}
+.d-calendar-mask {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.d-calendar-container {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  min-height: 50px;
+  background-color: white;
+  z-index: 1;
+  min-height: 354px;
+  animation: calendarFadeUp 0.3s both;
+}
+.d-calendar-header {
+  padding: 12px;
+}
+.d-calendar-year,
+.d-calendar-month {
+  margin-top: 4px;
+  display: inline-block;
+  background-color: #ccc;
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+.d-calendar-month {
+  margin-left: 4px;
+  min-width: 44px;
+  text-align: center;
+}
+.d-calendar-close {
+  position: relative;
+  display: block;
+  width: 24px;
+  height: 24px;
+  float: right;
+}
+.d-calendar-close::before,
+.d-calendar-close::after {
+  position: absolute;
+  content: '';
+  display: block;
+  top: 50%;
+  width: 20px;
+  height: 1px;
+  border-radius: 2px;
+  background-color: #333;
+}
+.d-calendar-close::before {
+  transform: rotate(45deg);
+}
+.d-calendar-close::after {
+  transform: rotate(-45deg);
+}
+.d-calendar-content {
+  padding: 0 6px 12px 6px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  max-height: 400px;
+}
+.d-calendar-content .item-year,
+.d-calendar-content .item-month {
+  position: relative;
+  width: calc(25% - 12px);
+  min-width: calc(25% - 12px);
+  text-align: center;
+  padding: 6px;
+}
+.d-calendar-content .item-month span,
+.d-calendar-content .item-year span {
+  display: block;
+  position: relative;
+  text-align: center;
+  border-radius: 4px;
+  padding: 6px 0;
+  background-color: #eee;
+}
+.d-calendar-content .item-day {
+  position: relative;
+  width: 14.285%;
+  min-width: 14.285%;
+  text-align: center;
+  padding: 5px 0;
+}
+.d-calendar-content .item-day span {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.d-calendar-content .item-day span.prev,
+.d-calendar-content .item-day span.next {
+  opacity: 0.5;
+}
+.d-calendar-content .item-year .active,
+.d-calendar-content .item-month .active,
+.d-calendar-content .item-day .active {
+  color: white;
+  background-color: red;
+  border-color: red;
+}
+.d-calendar-week {
+  width: 100%;
+  min-width: 100%;
+  margin-bottom: 6px;
+}
+.d-calendar-week span {
+  display: inline-block;
+  width: 14.285%;
+  min-width: 14.285%;
+  text-align: center;
+}
+@keyframes calendarFadeUp {
+  0% {
+    bottom: -300px;
+    opacity: 0;
+  }
+  100% {
+    bottom: 0;
+    opacity: 1;
+  }
+}

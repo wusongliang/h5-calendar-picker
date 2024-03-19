@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../dist/calendar.css">
+  <title>Example</title>
+  <style>
+    .mt-12 {
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="mt-12">Select Date</div>
+  <input id="date" type="text" placeholder="Select Date">
+
+  <div class="mt-12">Select Month</div>
+  <input id="month" type="text" placeholder="Select Month">
+
+  <div class="mt-12">Select Year</div>
+  <input id="year" type="text" placeholder="Select Year">
+  
+
+  <script src="../dist/calendar.js"></script>
+  <script>
+    window.calendarInit({
+      target: '#date',
+      dayChange: function (value) {
+        console.log('date: ' + value)
+      }
+    })
+    window.calendarInit({
+      target: '#month',
+      type: 'month',
+      monthChange: function (value) {
+        console.log('month: ' + value)
+      }
+    })
+    window.calendarInit({
+      target: '#year',
+      type: 'year',
+      minYear: 2000,
+      maxYear: 2024,
+      yearChange: function (value) {
+        console.log('year: ' + value)
+      }
+    })
+  </script>
+</body>
+</html>
