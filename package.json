@@ -7,6 +7,7 @@
     "example": "example"
   },
   "scripts": {
+    "serve": "webpack serve",
     "build": "webpack --config webpack.config.js"
   },
   "keywords": [
@@ -27,6 +28,7 @@
     "terser-webpack-plugin": "^5.3.10",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^5.90.3",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
   }
 }

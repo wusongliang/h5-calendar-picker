@@ -1,5 +1,18 @@
 .d-calendar {
   font-size: 14px;
+  z-index: 999;
+}
+.d-input-disabled {
+  position: relative;
+}
+.d-input-disabled ::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 .d-calendar-mask {
   position: fixed;
@@ -19,7 +32,6 @@
   min-height: 50px;
   background-color: white;
   z-index: 1;
-  min-height: 354px;
   animation: calendarFadeUp 0.3s both;
 }
 .d-calendar-header {
@@ -30,8 +42,8 @@
   margin-top: 4px;
   display: inline-block;
   background-color: #ccc;
-  padding: 3px 10px;
-  border-radius: 2px;
+  padding: 4px 10px;
+  border-radius: 4px;
 }
 .d-calendar-month {
   margin-left: 4px;
@@ -51,7 +63,7 @@
   content: '';
   display: block;
   top: 50%;
-  width: 20px;
+  width: 18px;
   height: 1px;
   border-radius: 2px;
   background-color: #333;
@@ -124,6 +136,63 @@
   min-width: 14.285%;
   text-align: center;
 }
+.d-calendar-time {
+  display: flex;
+  height: 120px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  position: relative;
+  width: 100%;
+}
+.d-calendar-time::before,
+.d-calendar-time::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 39px;
+  background-color: rgba(255, 255, 255, 0.6);
+  position: absolute;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.d-calendar-time::before {
+  top: 0;
+  border-bottom: 1px solid #eee;
+}
+.d-calendar-time::after {
+  bottom: 0;
+  border-top: 1px solid #eee;
+}
+.d-calendar-time .list {
+  transition: 0.2s;
+  width: 33.33%;
+  text-align: center;
+}
+.d-calendar-time .list-item {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+}
+.d-calendar-footer {
+  padding: 4px 0 20px 0;
+  text-align: center;
+}
+.d-calendar-footer button {
+  margin: 0 12px;
+  border: none;
+  min-width: 86px;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+.d-calendar-footer .button-close {
+  background-color: #eee;
+}
+.d-calendar-footer .button-confirm {
+  background-color: green;
+  color: white;
+}
+
 @keyframes calendarFadeUp {
   0% {
     bottom: -300px;

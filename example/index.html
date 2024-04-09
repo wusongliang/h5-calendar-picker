@@ -20,12 +20,18 @@
 
   <div class="mt-12">Select Year</div>
   <input id="year" type="text" placeholder="Select Year">
-  
+
+  <div class="mt-12">Select Date time</div>
+  <input id="date-time" type="text" placeholder="Select Date Time">
+
+  <div class="mt-12">Select time</div>
+  <input id="time" type="text" placeholder="Select Time">
 
   <script src="../dist/calendar.js"></script>
   <script>
     window.calendarInit({
       target: '#date',
+      maskClosable: false,
       dayChange: function (value) {
         console.log('date: ' + value)
       }
@@ -44,6 +50,20 @@
       maxYear: 2024,
       yearChange: function (value) {
         console.log('year: ' + value)
+      }
+    })
+    window.calendarInit({
+      target: '#date-time',
+      type: 'date-time',
+      timeChange: function (value) {
+        console.log('date-time: ' + value)
+      }
+    })
+    window.calendarInit({
+      target: '#time',
+      type: 'time',
+      timeChange: function (value) {
+        console.log('time: ' + value)
       }
     })
   </script>

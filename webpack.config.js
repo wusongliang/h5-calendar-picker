@@ -1,6 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
+const path = require('path');
 module.exports = {
   mode: 'production',
   entry: {
@@ -9,6 +10,14 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: __dirname + '/dist',
+    libraryTarget: 'umd'
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, ''),
+    },
+    compress: true,
+    port: 9000,
   },
   module: {
     rules: [
