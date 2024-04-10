@@ -1,6 +1,6 @@
 {
   "name": "h5-calendar-picker",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Select Date",
   "homepage": "https://github.com/wusongliang/h5-calendar-picker",
   "main": "dist/calendar.js",
