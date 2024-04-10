@@ -1,6 +1,7 @@
 .d-calendar {
   font-size: 14px;
-  z-index: 999;
+  z-index: 1999;
+  position: relative;
 }
 .d-input-disabled {
   position: relative;
