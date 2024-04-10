@@ -12,7 +12,7 @@ h5时间/日期/月份/年份选择，文件小，无依赖包；样式简陋，
 
 <script>
   import { calendarInit } from 'h5-calendar-picker'
-  import 'h5-calendar-picker/calendar.css'
+  import 'h5-calendar-picker/dist/calendar.css'
   calendarInit({
     target: '#date',
     type: 'date', // month | year | date-time | time

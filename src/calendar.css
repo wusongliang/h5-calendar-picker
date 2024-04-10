@@ -43,13 +43,12 @@
   margin-top: 4px;
   display: inline-block;
   background-color: #ccc;
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: 4px;
+  text-align: center;
 }
 .d-calendar-month {
-  margin-left: 4px;
-  min-width: 44px;
-  text-align: center;
+  margin-left: 6px;
 }
 .d-calendar-close {
   position: relative;
