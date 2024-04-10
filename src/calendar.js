@@ -4,9 +4,9 @@ const calendarInit = (options) => {
   elemInput.setAttribute('readonly', 'readonly')
   // 默认类型
   options ={ type: 'date', maskClosable: true, cancelText: '取消', confirmText: '确认', ...options }
-
-  let year = new Date().getFullYear(), month = new Date().getMonth() + 1, day = new Date().getDate();
-  let hours = new Date().getHours(), minute = new Date().getMinutes(), seconds = new Date().getSeconds();
+  const defaultDate = new Date(elemInput.value || new Date())
+  let year = defaultDate.getFullYear(), month = defaultDate.getMonth() + 1, day = defaultDate.getDate();
+  let hours = defaultDate.getHours(), minute = defaultDate.getMinutes(), seconds = defaultDate.getSeconds();
 
   // 获取月份天数
   const getDaysInMonth = (y, m) => {
