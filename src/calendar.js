@@ -2,7 +2,7 @@ import langs from './lang'
 const calendarInit = (options) => {
   // 默认类型
   options = {
-    lang: 'en',
+    lang: 'zh',
     type: 'date',
     maskClosable: true,
     minYear: (new Date().getFullYear() - 15),

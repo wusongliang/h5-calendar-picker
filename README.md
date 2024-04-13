@@ -15,7 +15,7 @@ h5时间/日期/月份/年份选择，文件小，无依赖包；样式简陋，
   import { calendarInit } from 'h5-calendar-picker'
   import 'h5-calendar-picker/dist/calendar.css'
   calendarInit({
-    lang: 'en', // en | zh
+    lang: 'zh', // en | zh
     target: '#date',
     type: 'date', // date | month | year | date-time | time
     minYear: 2000, // optional (选填)
