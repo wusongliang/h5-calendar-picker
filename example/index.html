@@ -18,6 +18,12 @@
   </style>
 </head>
 <body>
+  <div class="mt-12">Select Language</div>
+  <select id="lang" placeholder="Select Language" >
+    <option value="en">English</option>
+    <option value="zh">中文</option>
+  </select>
+
   <div class="mt-12">Select Date</div>
   <input id="date" type="text" placeholder="Select Date" value="2023-02-03">
 
@@ -35,21 +41,32 @@
 
   <script src="../dist/calendar.js"></script>
   <script>
+    var lang = 'en'
+    if (/lang\=zh/.test(window.location.search)) {
+      document.querySelector('#lang').value = 'zh'
+      lang = 'zh'
+    }
+    document.querySelector('#lang').addEventListener('change', function(el) {
+      window.location.href = window.location.origin + window.location.pathname + '?lang=' + el.target.value
+    });
     window.calendarInit({
+      lang: lang,
       target: '#date',
-      maskClosable: false,
       dayChange: function (value) {
         console.log('date: ' + value)
       }
     })
     window.calendarInit({
+      lang: lang,
       target: '#month',
       type: 'month',
+      maskClosable: false,
       monthChange: function (value) {
         console.log('month: ' + value)
       }
     })
     window.calendarInit({
+      lang: lang,
       target: '#year',
       type: 'year',
       minYear: 2000,
@@ -59,6 +76,7 @@
       }
     })
     window.calendarInit({
+      lang: lang,
       target: '#date-time',
       type: 'date-time',
       timeChange: function (value) {
@@ -66,6 +84,7 @@
       }
     })
     window.calendarInit({
+      lang: lang,
       target: '#time',
       type: 'time',
       timeChange: function (value) {

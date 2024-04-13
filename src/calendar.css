@@ -46,9 +46,7 @@
   padding: 4px 12px;
   border-radius: 4px;
   text-align: center;
-}
-.d-calendar-month {
-  margin-left: 6px;
+  margin-right: 6px;
 }
 .d-calendar-close {
   position: relative;

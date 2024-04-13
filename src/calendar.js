@@ -1,9 +1,20 @@
+import langs from './lang'
 const calendarInit = (options) => {
+  // 默认类型
+  options = {
+    lang: 'en',
+    type: 'date',
+    maskClosable: true,
+    minYear: (new Date().getFullYear() - 15),
+    maxYear: (new Date().getFullYear() + 4),
+    ...options
+  }
+  const lang = langs[options.lang]
   const body = document.body || document.querySelector('body')
   const elemInput = document.querySelector(options.target)
   elemInput.setAttribute('readonly', 'readonly')
-  // 默认类型
-  options ={ type: 'date', maskClosable: true, cancelText: '取消', confirmText: '确认', ...options }
+
+  // 默认时间
   const defaultDate = new Date(elemInput.value || new Date())
   let year = defaultDate.getFullYear(), month = defaultDate.getMonth() + 1, day = defaultDate.getDate();
   let hours = defaultDate.getHours(), minute = defaultDate.getMinutes(), seconds = defaultDate.getSeconds();
@@ -88,7 +99,7 @@ const calendarInit = (options) => {
 
   // 设置可选日期
   const setDaysElems = (parentElem, dCalendar, y, m) => {
-    parentElem.innerHTML = '<div class="d-calendar-week"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>'
+    parentElem.innerHTML = `<div class="d-calendar-week"><span>${lang.weeks[1]}</span><span>${lang.weeks[2]}</span><span>${lang.weeks[3]}</span><span>${lang.weeks[4]}</span><span>${lang.weeks[5]}</span><span>${lang.weeks[6]}</span><span>${lang.weeks[7]}</span></div>`
     setPrevDays(parentElem, dCalendar, y, m)
     const days = getDaysInMonth(y, m)
     pushDays({ parentElem, dCalendar, startDay: 1, endDay: days, year, month })
@@ -102,13 +113,13 @@ const calendarInit = (options) => {
       const itemMonth = document.createElement('div')
       itemMonth.classList.add('item-month')
       const itemMonthText = document.createElement('span')
-      itemMonthText.innerText = `${i}月`
+      itemMonthText.innerText = `${lang.months[i]}`
       if (month === i) {
         itemMonthText.classList.add('active')
       }
       itemMonthText.addEventListener('click', function () {
         month = i
-        dCalendarMonth.innerText = `${month}月`
+        dCalendarMonth.innerText = `${lang.months[month]}`
         const active = document.querySelector('.item-month .active')
         if (active) {
           active.classList.remove('active')
@@ -143,7 +154,7 @@ const calendarInit = (options) => {
       }
       itemYearText.addEventListener('click', function () {
         year = i
-        dCalendarYear.innerText = `${year}年`
+        dCalendarYear.innerText = `${year}`
         const active = document.querySelector('.item-year .active')
         if (active) {
           active.classList.remove('active')
@@ -240,14 +251,14 @@ const calendarInit = (options) => {
 
     const cancelEl = document.createElement('button')
     cancelEl.classList.add('button-close')
-    cancelEl.innerText = options.cancelText
+    cancelEl.innerText = options.cancelText || lang.cancelText
     cancelEl.addEventListener('click', () => {
       body.removeChild(dCalendar)
     })
 
     const confirmEl = document.createElement('button')
     confirmEl.classList.add('button-confirm')
-    confirmEl.innerText = options.confirmText
+    confirmEl.innerText = options.confirmText || lang.confirmText
     confirmEl.addEventListener('click', () => {
       const date = `${year}-${month < 10 ? `0${month}` : month}-${day < 10 ? `0${day}` : day}`
       const time = `${hours < 10 ? `0${hours}` : hours}:${minute < 10 ? `0${minute}` : minute}:${seconds < 10 ? `0${seconds}` : seconds}`
@@ -312,21 +323,27 @@ const calendarInit = (options) => {
       // 年
       const dCalendarYear = document.createElement('span')
       dCalendarYear.classList.add('d-calendar-year')
-      dCalendarYear.innerText = `${year}年`
+      dCalendarYear.innerText = `${year}`
       dCalendarYear.addEventListener('click', function() {
-        setYearsElems(dCalendarContent, dCalendar, this, dCalendarMonth, options.minYear || (new Date().getFullYear() - 15), options.maxYear || (new Date().getFullYear() + 4))
+        setYearsElems(dCalendarContent, dCalendar, this, dCalendarMonth, options.minYear, options.maxYear)
       })
-      dCalendarHeader.appendChild(dCalendarYear)
+      if (options.lang !== 'en') {
+        dCalendarHeader.appendChild(dCalendarYear)
+      }
 
       // 月
       const dCalendarMonth = document.createElement('span')
       if (options.type !== 'year') {
         dCalendarMonth.classList.add('d-calendar-month')
-        dCalendarMonth.innerText = `${month}月`
+        dCalendarMonth.innerText = `${lang.months[month]}`
         dCalendarMonth.addEventListener('click', function() {
           setMonthsElems(dCalendarContent, dCalendar, this)
         })
         dCalendarHeader.appendChild(dCalendarMonth)
+      }
+
+      if (options.lang === 'en') {
+        dCalendarHeader.appendChild(dCalendarYear)
       }
 
       // 内容盒子
@@ -335,7 +352,7 @@ const calendarInit = (options) => {
       dCalendarContainer.appendChild(dCalendarContent)
       
       if (options.type === 'year') {
-        setYearsElems(dCalendarContent, dCalendar, this, dCalendarMonth, options.minYear || (new Date().getFullYear() - 15), options.maxYear || (new Date().getFullYear() + 4))
+        setYearsElems(dCalendarContent, dCalendar, this, dCalendarMonth, options.minYear, options.maxYear)
       }
       if (options.type === 'month') {
         setMonthsElems(dCalendarContent, dCalendar, dCalendarMonth)
