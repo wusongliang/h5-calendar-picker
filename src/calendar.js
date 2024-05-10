@@ -196,7 +196,7 @@ const calendarInit = (options) => {
      
       // 垂直方向滑动
       if (Math.abs(distanceX) <= Math.abs(distanceY)) {
-        translateY = translateY + distanceY
+        translateY = translateY + Math.ceil(distanceY / 2)
         if (translateY > height) {
           translateY = height
         }

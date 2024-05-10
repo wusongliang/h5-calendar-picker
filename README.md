@@ -22,7 +22,7 @@ h5时间/日期/月份/年份选择，文件小，无依赖包；样式简陋，
     maxYear: 2024, // optional (选填)
     cancelText: 'Cancel', // optional (选填)
     confirmText: 'Confirm', // optional (选填)
-    maskClosable: true, // 是否点击遮罩层关闭 (Do you want to click on the mask layer to close)
+    maskClosable: true, // 是否点击遮罩层关闭 (选填) (Do you want to click on the mask layer to close)
     dayChange: function (value) {
       console.log('date: ' + value)
     },
@@ -44,6 +44,6 @@ h5时间/日期/月份/年份选择，文件小，无依赖包；样式简陋，
 or
 
 ```html
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/h5-calendar-picker@1.0.0/dist/calendar.css">
- <script src="https://cdn.jsdelivr.net/npm/h5-calendar-picker@1.0.0/dist/calendar.js"></script>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/h5-calendar-picker@1.1.1/dist/calendar.css">
+ <script src="https://cdn.jsdelivr.net/npm/h5-calendar-picker@1.1.1/dist/calendar.js"></script>
 ```

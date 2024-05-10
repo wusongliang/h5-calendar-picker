@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../src/calendar.css">
+  <link rel="stylesheet" href="../dist/calendar.css">
   <title>Example</title>
   <style>
      * {
@@ -18,36 +18,45 @@
   </style>
 </head>
 <body>
-  <div class="mt-12">Select Language</div>
+  <div id="note" style="font-size: 14px;">Please switch to mobile mode or open the test on your phone</div>
+
+  <div id="sLang" class="mt-12">Select Language</div>
   <select id="lang" placeholder="Select Language" >
     <option value="en">English</option>
     <option value="zh">中文</option>
   </select>
 
-  <div class="mt-12">Select Date</div>
+  <div id="sDate" class="mt-12">Select Date</div>
   <input id="date" type="text" placeholder="Select Date" value="2023-02-03">
 
-  <div class="mt-12">Select Month</div>
+  <div id="sMonth" class="mt-12">Select Month</div>
   <input id="month" type="text" placeholder="Select Month">
 
-  <div class="mt-12">Select Year</div>
+  <div id="sYear" class="mt-12">Select Year</div>
   <input id="year" type="text" placeholder="Select Year">
-
-  <div class="mt-12">Select Date time</div>
+  
+  <div id="sDateTime" class="mt-12">Select Date Time</div>
   <input id="date-time" type="text" placeholder="Select Date Time" value="2023-02-03 12:34:24">
 
-  <div class="mt-12">Select time</div>
+  <div id="sTime" class="mt-12">Select Time</div>
   <input id="time" type="text" placeholder="Select Time">
 
   <script src="../dist/calendar.js"></script>
   <script>
     var lang = 'en'
     if (/lang\=zh/.test(window.location.search)) {
-      document.querySelector('#lang').value = 'zh'
       lang = 'zh'
+      document.querySelector('#lang').value = 'zh'
+      document.querySelector('#note').innerHTML = '请切换为移动端模式或在手机打开测试'
+      document.querySelector('#sLang').innerHTML = '选择语言'
+      document.querySelector('#sDate').innerHTML = '选择日期'
+      document.querySelector('#sMonth').innerHTML = '选择月份'
+      document.querySelector('#sYear').innerHTML = '选择年份'
+      document.querySelector('#sDateTime').innerHTML = '选择日期时间'
+      document.querySelector('#sTime').innerHTML = '选择时间'
     }
     document.querySelector('#lang').addEventListener('change', function(el) {
-      window.location.href = window.location.origin + window.location.pathname + '?lang=' + el.target.value
+      window.location.href = window.location.origin + window.location.pathname + '?lang=' + el.target.value;
     });
     window.calendarInit({
       lang: lang,
@@ -60,7 +69,6 @@
       lang: lang,
       target: '#month',
       type: 'month',
-      maskClosable: false,
       monthChange: function (value) {
         console.log('month: ' + value)
       }
