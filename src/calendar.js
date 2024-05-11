@@ -184,11 +184,13 @@ const calendarInit = (options) => {
     let startX, startY, distanceX, distanceY;
      
     const touchStart = (e) => {
+      e.preventDefault()
       startX = e.touches[0].pageX
       startY = e.touches[0].pageY
     }
      
     const touchMove = (e) => {
+      e.preventDefault()
       const moveX = e.touches[0].pageX
       const moveY = e.touches[0].pageY
       distanceX = moveX - startX
@@ -196,7 +198,7 @@ const calendarInit = (options) => {
      
       // 垂直方向滑动
       if (Math.abs(distanceX) <= Math.abs(distanceY)) {
-        translateY = translateY + Math.ceil(distanceY / 2)
+        translateY = translateY + Math.ceil(distanceY / 4)
         if (translateY > height) {
           translateY = height
         }
@@ -209,6 +211,7 @@ const calendarInit = (options) => {
      
     // 滑动结束时取整，变量归零
     const touchEnd = (e) => {
+      e.preventDefault()
       translateY = Math.round(translateY / height) * height
       el.style = `transform: translateY(${translateY}px);`
       startX = startY = distanceX = distanceY = 0

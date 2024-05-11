@@ -44,6 +44,6 @@ h5时间/日期/月份/年份选择，文件小，无依赖包；样式简陋，
 or
 
 ```html
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/h5-calendar-picker@1.1.1/dist/calendar.css">
- <script src="https://cdn.jsdelivr.net/npm/h5-calendar-picker@1.1.1/dist/calendar.js"></script>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/h5-calendar-picker@1.1.2/dist/calendar.css">
+ <script src="https://cdn.jsdelivr.net/npm/h5-calendar-picker@1.1.2/dist/calendar.js"></script>
 ```
